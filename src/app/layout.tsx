@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import CustomCursor from '@/components/ui/CustomCursor'
 import {
   Instrument_Serif,
   DM_Mono,
@@ -51,6 +52,7 @@ export default function RootLayout({
       <body
         className={`${instrumentSerif.variable} ${dmMono.variable} ${bebasNeue.variable} ${notoSerifKR.variable} bg-ink text-paper antialiased`}
       >
+        <CustomCursor />
         {children}
       </body>
     </html>

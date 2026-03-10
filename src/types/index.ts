@@ -68,7 +68,7 @@ export interface SearchResult {
 // ============================================================
 
 export interface JwtPayload {
-  sub: string;   // 항상 'admin'
+  sub: string;   // 항상 'owner'
   iat: number;
   exp: number;
 }
