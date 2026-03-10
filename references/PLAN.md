@@ -4,7 +4,7 @@
 
 | 항목 | 내용 |
 |------|------|
-| 프로젝트명 | invlog (Investment Log) |
+| 프로젝트명 | investlog (Investment Log) |
 | 슬로건 | Your Investment, Logged. |
 | 목적 | 개인 투자 내역(매수/매도/배당금)을 안전하게 기록·시각화 |
 | 배포 환경 | Vercel (Next.js App Router) |
@@ -443,7 +443,7 @@ investment-tracker/
 
 ## 11. 개발 순서 (권장)
 
-1. `npx create-next-app@latest invlog --typescript --tailwind --app`
+1. `npx create-next-app@latest investlog --typescript --tailwind --app`
 2. `npm install @supabase/supabase-js yahoo-finance2 bcryptjs jose`
 3. Supabase 프로젝트 생성 → SQL Editor에서 스키마 실행
 4. `.env.local` 환경변수 설정
