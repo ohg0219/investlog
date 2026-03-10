@@ -2,8 +2,8 @@
 
 Session changes to git commit. Does not change PDCA phase.
 
-**Recommended timing**: After Do (implementation) or after Report, before Archive.
-Archive has built-in commit suggestion, so separate commit after Archive is unnecessary.
+**Recommended timing**: After Do (implementation), after Report, or after Cleanup.
+Recommended flow: `/pdca archive` → `/pdca cleanup` → `/pdca commit`
 
 1. Read `docs/.pdca-status.json`:
    - If feature argument provided, use that feature

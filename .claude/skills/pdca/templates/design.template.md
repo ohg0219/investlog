@@ -1,6 +1,6 @@
 ---
 template: design
-version: 1.2
+version: 1.3
 description: PDCA Design phase document template
 variables:
   - feature: Feature name
@@ -19,6 +19,7 @@ variables:
 > **Author**: {author}
 > **Date**: {date}
 > **Status**: Draft
+> **Complexity**: medium
 > **Planning Doc**: [{feature}.plan.md](../01-plan/features/{feature}.plan.md)
 
 ---
@@ -169,38 +170,66 @@ interface {Entity} {
 
 ---
 
-## 8. TDD Test Scenarios
+## 8. Acceptance Criteria
 
-### 8.1 Test Strategy
+> Plan 문서의 요구사항을 구현 관점에서 재정의한 수용 기준.
+> gap-detector가 이 항목을 기준으로 구현 충족 여부를 검증한다.
+
+### 8.1 Functional Acceptance Criteria
+
+| ID    | Criteria | Verification Method | Priority |
+|-------|----------|---------------------|----------|
+| AC-01 | {Given [조건] / When [행동] / Then [결과] 형식 권장} | {자동 테스트 / 수동 검증 / 로그 확인} | Must/Should/Could |
+| AC-02 | {기준 2} | {검증 방법} | Must/Should/Could |
+
+### 8.2 Non-Functional Acceptance Criteria
+
+| Category   | Criteria                        | Measurement Method     |
+|------------|---------------------------------|------------------------|
+| Performance | {예: API 응답시간 95th percentile < 200ms} | {k6 / JMeter / APM} |
+| Security    | {예: 인증 없는 엔드포인트 접근 시 401 반환} | {통합 테스트}          |
+| Reliability | {예: 에러 발생 시 사용자 데이터 유실 없음}  | {트랜잭션 롤백 테스트} |
+
+### 8.3 Edge Cases
+
+| ID    | Scenario                    | Expected Behavior              |
+|-------|-----------------------------|--------------------------------|
+| EC-01 | {경계값, 예외 입력, 동시성 등} | {시스템이 어떻게 반응해야 하는가} |
+
+---
+
+## 9. TDD Test Scenarios
+
+### 9.1 Test Strategy
 
 - **Approach**: TDD (Red-Green-Refactor)
 - **Scope**: Unit tests for all business logic functions
 - **Coverage Target**: 80%+
 - **Test Framework**: {프로젝트에 맞는 프레임워크 (Jest/Vitest/pytest 등)}
 
-### 8.2 Test Scenario List
+### 9.2 Test Scenario List
 
 | ID | Target | Description | Input | Expected Output | Priority |
 |----|--------|-------------|-------|-----------------|----------|
 | TS-01 | {함수/컴포넌트명} | {테스트 설명} | {입력 조건} | {기대 결과} | Critical/High/Medium/Low |
 | TS-02 | {함수/컴포넌트명} | {테스트 설명} | {입력 조건} | {기대 결과} | Critical/High/Medium/Low |
 
-### 8.3 Edge Cases
+### 9.3 Edge Cases
 
 | ID | Scenario | Expected Behavior |
 |----|----------|-------------------|
 | EC-01 | {경계 조건 설명} | {기대 동작} |
 
-### 8.4 Test Implementation Order
+### 9.4 Test Implementation Order
 
 1. TS-01: {이유 - 핵심 로직이므로 먼저}
 2. TS-02: {이유 - TS-01에 의존}
 
 ---
 
-## 9. Implementation Guide
+## 10. Implementation Guide
 
-### 9.1 File Structure
+### 10.1 File Structure
 
 ```
 src/
@@ -211,7 +240,7 @@ src/
     types/
 ```
 
-### 9.2 Implementation Order
+### 10.2 Implementation Order
 
 1. [ ] Define data model
 2. [ ] Implement API

@@ -34,6 +34,22 @@ You will receive:
 
 ## Comparison Items
 
+### 0. Acceptance Criteria (최우선 검증)
+
+> design.md의 Section 8 (Acceptance Criteria)이 존재하는 경우에만 실행.
+> 존재하지 않으면 이 섹션을 건너뛴다.
+
+- AC-xx 항목을 하나씩 읽고, 구현 코드에서 해당 기준이 충족되는지 확인
+- Verification Method 컬럼 참조: "자동 테스트"면 테스트 파일에서 검증, "수동 검증"이면 코드 로직에서 추론
+- Status: **Satisfied** / **Partial** / **Not Satisfied**
+- Not Satisfied 항목은 Critical severity로 Gap 목록에 포함
+
+**출력 형식:**
+
+| AC-ID | Criteria (요약) | Status | Evidence (코드 위치 또는 근거) |
+|-------|-----------------|--------|-------------------------------|
+| AC-01 | {기준 요약}      | Satisfied / Partial / Not Satisfied | {파일명:라인 또는 "미구현"} |
+
 ### 1. API Endpoints
 - Compare Design's API endpoint list vs actual route/endpoint implementations
 - Check: Method, Path, Request body, Response format, Error codes
@@ -104,6 +120,14 @@ Overall Match Rate: {N}%
 - **Added**: In implementation but not in Design → flagged but doesn't reduce score
 
 Overall Match Rate = (Sum of item scores) / (Total Design items) * 100
+
+### AC 가중치
+
+- design.md에 Section 8 (AC)이 존재하는 경우:
+  - AC 충족률이 Overall Match Rate 계산에 포함됨
+  - AC Not Satisfied 1건 = Critical gap = 전체 점수에서 10점 감점
+  - AC Partial 1건 = Warning gap = 전체 점수에서 5점 감점
+- Section 8이 없으면 기존 5개 항목 기준으로만 계산 (기존 동작 유지)
 
 ## Important Notes
 

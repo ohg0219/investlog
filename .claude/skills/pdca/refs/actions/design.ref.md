@@ -50,7 +50,18 @@
 
    - **CRITICAL**: 모든 Agent를 단일 메시지에서 동시에 호출 — 순차 호출 금지
 
-6. Synthesize agent outputs: read [design.template.md](../../templates/design.template.md) and produce `docs/02-design/features/{feature}.design.md`
+6. Synthesize agent outputs into `docs/02-design/features/{feature}.design.md`:
+
+   **6a. 통합**: Read [design.template.md](../../templates/design.template.md). 에이전트 산출물을 각 섹션에 병합하여 전체 design 문서 초안 작성.
+
+   **6b. Section 8 (Acceptance Criteria) 작성**:
+   - plan.md에 FR-xx 요구사항이 있으면 → 각 FR을 `Given [조건] / When [행동] / Then [결과]` 형식 AC로 변환하여 8.1 테이블에 기입
+   - plan.md에 FR-xx 요구사항이 없으면 → 기능 목적에서 최소 3개 AC를 도출하여 8.1에 기입
+   - Section 4에 Error Responses가 정의되어 있으면 → 해당 에러 시나리오를 EC로 연계하여 8.3 테이블에 기입
+   - **이 섹션을 공란으로 남기지 말 것**
+
+   **6c. Section 9(TDD Test Scenarios), Section 10(Implementation Guide) 순서로 마무리**
+
 7. Review and confirm document was created
 8. Update `docs/.pdca-status.json`:
    - `phase` = `"design"`, `phaseNumber` = `2`

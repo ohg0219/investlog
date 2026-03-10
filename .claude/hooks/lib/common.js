@@ -207,6 +207,36 @@ function debugLog(tag, msg, data) {
   process.stderr.write(`[DEBUG:${tag}] ${msg}${data ? ' ' + JSON.stringify(data) : ''}\n`);
 }
 
+/**
+ * 현재 phase에 해당하는 ref 파일 내용을 읽어 반환.
+ * @param {string} root 프로젝트 루트 경로
+ * @param {string} phase PDCA phase 문자열
+ * @returns {string|null} ref 파일 내용 (3000자 초과 시 잘림) 또는 null
+ */
+function getPhaseRefContent(root, phase) {
+  const PHASE_REF_MAP = {
+    'plan':      '.claude/skills/pdca/refs/actions/plan.ref.md',
+    'design':    '.claude/skills/pdca/refs/actions/design.ref.md',
+    'do':        '.claude/skills/pdca/refs/actions/do.ref.md',
+    'check':     '.claude/skills/pdca/refs/actions/analyze.ref.md',
+    'act':       '.claude/skills/pdca/refs/actions/iterate.ref.md',
+    'completed': '.claude/skills/pdca/refs/actions/report.ref.md',
+  };
+  const relPath = PHASE_REF_MAP[phase];
+  if (!relPath) return null;
+  try {
+    const fullPath = path.join(root, relPath);
+    const content = fs.readFileSync(fullPath, 'utf8');
+    const MAX = 3000;
+    if (content.length > MAX) {
+      return content.substring(0, MAX) + '\n...(이하 생략)';
+    }
+    return content;
+  } catch (e) {
+    return null;
+  }
+}
+
 module.exports = {
   readStdin,
   readPdcaStatus,
@@ -217,4 +247,5 @@ module.exports = {
   detectPdcaKeywords,
   debugLog,
   getProjectRoot,
+  getPhaseRefContent,
 };

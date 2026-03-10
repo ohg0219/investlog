@@ -72,6 +72,23 @@ Overall Match Rate: {N}%
   Not implemented: {N} items ({N}%)
 ```
 
+### 2.5 Acceptance Criteria Verification
+
+> design.md에 Section 8(Acceptance Criteria)이 없으면 이 섹션을 생략한다.
+
+| ID | Criteria | Status | Evidence | Notes |
+|----|----------|--------|----------|-------|
+| AC-01 | {기준 설명} | Satisfied / Partial / Not Satisfied | {파일:라인 or 수동 확인} | {비고} |
+
+**AC Summary**
+```
+Satisfied:     {N} items
+Partial:       {N} items
+Not Satisfied: {N} items
+---
+Iterate Required: Yes / No
+```
+
 ---
 
 ## 3. Code Quality Analysis
@@ -132,6 +149,23 @@ Overall Match Rate: {N}%
 
 ---
 
+## 5.5 Tech Debt Trend
+
+> 이전 사이클 analysis.md가 없으면 아래 표를 **"최초 사이클 — N/A"** 로 채운다.
+
+| Metric | Previous | Current | Delta | Verdict |
+|--------|----------|---------|-------|---------|
+| Max Complexity | {N or N/A} | {N} | {+N / -N / N/A} | OK / ⚠ Warning |
+| Avg Line Coverage | {N% or N/A} | {N}% | {+N% / -N% / N/A} | OK / ⚠ Warning |
+| Critical Issues | {N or N/A} | {N} | {+N / -N / N/A} | OK / ⚠ Warning |
+
+**부채 경고 임계치**:
+- 복잡도: 이전 대비 **+5 이상** 상승 → ⚠ Warning
+- 커버리지: 이전 대비 **-10%p 이상** 하락 → ⚠ Warning
+- Critical 이슈: **신규 발생** → ⚠ Warning
+
+---
+
 ## 6. Overall Score
 
 ### 6.1 Base Score (Design Match)
@@ -140,6 +174,7 @@ Overall Match Rate: {N}%
 Design Match Score: {N}/100
 ---
   Match:          {N} items ({N}%)
+  AC Criteria:    {N} items ({N}%)
   Code Quality:   {N} points
   Security:       {N} points
   Convention:     {N} points
