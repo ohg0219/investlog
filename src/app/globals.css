@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-ink: #0a0a08;
+  --color-paper: #f4f0e8;
+  --color-cream: #ede9df;
+  --color-warm-mid: #c8c0b0;
+  --color-accent: #c8a96e;
+  --color-accent-dim: #8a7248;
+  --color-green: #3d6b4f;
+  --color-green-pale: #ddeee4;
+  --color-green-bright: #6bba8a;
+  --color-red: #8b3a3a;
+  --color-red-pale: #f0dede;
+  --color-red-bright: #d07070;
+  --color-blue: #2c4a6e;
+  --color-blue-pale: #dde6f0;
+  --color-blue-bright: #6898cc;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}

@@ -1,0 +1,85 @@
+// ============================================================
+// Stock (주식상품)
+// ============================================================
+
+export interface Stock {
+  id: string;          // UUID, Primary Key
+  ticker: string;      // Yahoo Finance 티커 (예: 005930.KS, AAPL, 7203.T)
+  name: string;        // 종목명 (예: 삼성전자, Apple Inc.)
+  market: string;      // 거래소 식별자 (예: KRX, NASDAQ, NYSE, TSE)
+  country: 'KR' | 'US' | 'JP' | (string & {}); // ISO 2자리 국가 코드
+  currency: 'KRW' | 'USD' | 'JPY' | (string & {}); // ISO 통화 코드
+  sector?: string;     // 업종 (예: Technology, 반도체)
+  memo?: string;       // 사용자 메모
+  created_at: string;  // ISO 8601 timestamp
+  updated_at: string;  // ISO 8601 timestamp
+}
+
+// ============================================================
+// Transaction (거래내역)
+// ============================================================
+
+export type TransactionType = 'BUY' | 'SELL' | 'DIVIDEND';
+
+export interface Transaction {
+  id: string;            // UUID, Primary Key
+  stock_id: string;      // stocks.id FK (NOT NULL)
+  type: TransactionType; // 거래 유형
+  date: string;          // 거래일 (YYYY-MM-DD)
+  quantity?: number;     // 수량 — BUY/SELL 필수, DIVIDEND null 허용
+  price?: number;        // 단가 — Stock.currency 기준, DIVIDEND null 허용
+  amount: number;        // 총 금액 (NOT NULL)
+  memo?: string;         // 거래 메모
+  created_at: string;    // ISO 8601 timestamp
+  updated_at: string;    // ISO 8601 timestamp
+}
+
+// ============================================================
+// lib/yahoo.ts 반환 타입
+// ============================================================
+
+export interface PriceQuote {
+  price: number;
+  currency: string;
+  changePercent: number;
+  name: string;
+}
+
+export interface HistoricalData {
+  date: string;   // YYYY-MM-DD
+  open: number;
+  high: number;
+  low: number;
+  close: number;  // 수정 종가 기준
+  volume: number;
+}
+
+export interface SearchResult {
+  ticker: string;
+  name: string;
+  exchange: string;  // Yahoo 코드 (KSC, NMS, NYQ 등)
+  market: string;    // 정규화된 거래소 명칭
+  country: string;
+  currency: string;
+}
+
+// ============================================================
+// lib/auth.ts 반환 타입
+// ============================================================
+
+export interface JwtPayload {
+  sub: string;   // 항상 'admin'
+  iat: number;
+  exp: number;
+}
+
+// ============================================================
+// lib/calculations.ts 반환 타입
+// ============================================================
+
+export interface DailyBalance {
+  date: string;    // YYYY-MM-DD
+  balance: number; // 누적 잔고 (BUY 누적 - SELL 누적)
+}
+
+export type WeightByStock = Record<string, number>; // Key: stock_id, Value: 비중(%)

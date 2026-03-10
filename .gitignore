@@ -1,0 +1,50 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# environment variables
+.env
+.env.local
+.env.*.local
+
+# Next.js
+.next/
+out/
+
+# build outputs
+dist/
+build/
+
+# test coverage
+coverage/
+
+# Turborepo
+.turbo/
+
+# misc
+.DS_Store
+*.pem
+Thumbs.db
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+# Cygwin/MSYS2 bash crash dump (Windows 개발 환경)
+bash.exe.stackdump
+**/bash.exe.stackdump
+
+# PDCA snapshots (local session state, not for version control)
+docs/.pdca-snapshots/
+
+.claude/
