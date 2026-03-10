@@ -1,0 +1,134 @@
+{
+  "version": "2.0",
+  "primaryFeature": "02-auth",
+  "activeFeatures": [
+    "02-auth",
+    "03-stocks",
+    "04-transactions",
+    "05-dashboard"
+  ],
+  "features": {
+    "02-auth": {
+      "phase": "plan",
+      "phaseNumber": 1,
+      "matchRate": null,
+      "iterationCount": 0,
+      "documents": {
+        "plan": "docs/01-plan/features/02-auth.plan.md",
+        "design": null,
+        "analysis": null,
+        "report": null
+      },
+      "createdAt": "2026-03-10T00:00:00.000Z",
+      "updatedAt": "2026-03-10T00:00:00.000Z"
+    },
+    "03-stocks": {
+      "phase": "plan",
+      "phaseNumber": 1,
+      "matchRate": null,
+      "iterationCount": 0,
+      "documents": {
+        "plan": "docs/01-plan/features/03-stocks.plan.md",
+        "design": null,
+        "analysis": null,
+        "report": null
+      },
+      "createdAt": "2026-03-10T00:00:00.000Z",
+      "updatedAt": "2026-03-10T00:00:00.000Z"
+    },
+    "04-transactions": {
+      "phase": "plan",
+      "phaseNumber": 1,
+      "matchRate": null,
+      "iterationCount": 0,
+      "documents": {
+        "plan": "docs/01-plan/features/04-transactions.plan.md",
+        "design": null,
+        "analysis": null,
+        "report": null
+      },
+      "createdAt": "2026-03-10T00:00:00.000Z",
+      "updatedAt": "2026-03-10T00:00:00.000Z"
+    },
+    "05-dashboard": {
+      "phase": "plan",
+      "phaseNumber": 1,
+      "matchRate": null,
+      "iterationCount": 0,
+      "documents": {
+        "plan": "docs/01-plan/features/05-dashboard.plan.md",
+        "design": null,
+        "analysis": null,
+        "report": null
+      },
+      "createdAt": "2026-03-10T00:00:00.000Z",
+      "updatedAt": "2026-03-10T00:00:00.000Z"
+    }
+  },
+  "history": [
+    {
+      "action": "plan_created",
+      "feature": "01-foundation",
+      "timestamp": "2026-03-10T00:00:00.000Z"
+    },
+    {
+      "action": "plan_created",
+      "feature": "02-auth",
+      "timestamp": "2026-03-10T00:00:00.000Z"
+    },
+    {
+      "action": "plan_created",
+      "feature": "03-stocks",
+      "timestamp": "2026-03-10T00:00:00.000Z"
+    },
+    {
+      "action": "plan_created",
+      "feature": "04-transactions",
+      "timestamp": "2026-03-10T00:00:00.000Z"
+    },
+    {
+      "action": "plan_created",
+      "feature": "05-dashboard",
+      "timestamp": "2026-03-10T00:00:00.000Z"
+    },
+    {
+      "action": "design_created",
+      "feature": "01-foundation",
+      "timestamp": "2026-03-10T00:00:00.000Z"
+    },
+    {
+      "action": "do_started",
+      "feature": "01-foundation",
+      "timestamp": "2026-03-10T00:00:00.000Z"
+    },
+    {
+      "action": "check_completed",
+      "feature": "01-foundation",
+      "matchRate": 86,
+      "timestamp": "2026-03-10T00:00:00.000Z"
+    },
+    {
+      "action": "iterate_completed",
+      "feature": "01-foundation",
+      "matchRate": 92,
+      "iterationCount": 1,
+      "timestamp": "2026-03-10T00:00:00.000Z"
+    },
+    {
+      "action": "report_generated",
+      "feature": "01-foundation",
+      "timestamp": "2026-03-10T00:00:00.000Z"
+    },
+    {
+      "action": "archived",
+      "feature": "01-foundation",
+      "archivedTo": "docs/archive/2026-03/01-foundation",
+      "timestamp": "2026-03-10T00:00:00.000Z"
+    },
+    {
+      "action": "cleanup",
+      "deletedFeatures": ["01-foundation"],
+      "timestamp": "2026-03-10T00:00:00.000Z"
+    }
+  ]
+}
