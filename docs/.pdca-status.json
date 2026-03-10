@@ -1,27 +1,12 @@
 {
   "version": "2.0",
-  "primaryFeature": "02-auth",
+  "primaryFeature": "03-stocks",
   "activeFeatures": [
-    "02-auth",
     "03-stocks",
     "04-transactions",
     "05-dashboard"
   ],
   "features": {
-    "02-auth": {
-      "phase": "plan",
-      "phaseNumber": 1,
-      "matchRate": null,
-      "iterationCount": 0,
-      "documents": {
-        "plan": "docs/01-plan/features/02-auth.plan.md",
-        "design": null,
-        "analysis": null,
-        "report": null
-      },
-      "createdAt": "2026-03-10T00:00:00.000Z",
-      "updatedAt": "2026-03-10T00:00:00.000Z"
-    },
     "03-stocks": {
       "phase": "plan",
       "phaseNumber": 1,
@@ -140,6 +125,45 @@
         "📝 01-foundation PDCA 문서 추가 및 아카이브"
       ],
       "timestamp": "2026-03-10T00:00:00.000Z"
+    },
+    {
+      "action": "design_created",
+      "feature": "02-auth",
+      "timestamp": "2026-03-10T00:00:00.000Z"
+    },
+    {
+      "action": "do_started",
+      "feature": "02-auth",
+      "timestamp": "2026-03-10T06:00:00.000Z"
+    },
+    {
+      "action": "check_completed",
+      "feature": "02-auth",
+      "matchRate": 87,
+      "timestamp": "2026-03-10T08:00:00.000Z"
+    },
+    {
+      "action": "iteration_completed",
+      "feature": "02-auth",
+      "iteration": 1,
+      "matchRate": 93,
+      "timestamp": "2026-03-10T09:00:00.000Z"
+    },
+    {
+      "action": "report_generated",
+      "feature": "02-auth",
+      "timestamp": "2026-03-10T09:30:00.000+09:00"
+    },
+    {
+      "action": "archived",
+      "feature": "02-auth",
+      "archivedTo": "docs/archive/2026-03/02-auth",
+      "timestamp": "2026-03-10T17:24:39.000+09:00"
+    },
+    {
+      "action": "cleanup",
+      "deletedFeatures": ["02-auth"],
+      "timestamp": "2026-03-10T17:27:56.000+09:00"
     }
   ]
 }
