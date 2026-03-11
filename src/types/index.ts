@@ -150,3 +150,68 @@ export interface LookupResult {
   exchange: string; // Yahoo 거래소 코드 (KSC, NMS, NYQ 등)
   type: string;     // 항상 'EQUITY' (필터됨)
 }
+
+// ============================================================
+// 05-01-dashboard-infra 추가 타입
+// ============================================================
+
+/** GET /api/dashboard/summary 응답 최상위 구조 */
+export interface DashboardSummary {
+  kpi: {
+    totalInvested: number;    // 누적 매수 총액 (BUY amount 합계)
+    realizedPnL: number;      // 실현 손익 (평균단가법)
+    dividendIncome: number;   // 누적 배당 수입 (DIVIDEND amount 합계)
+    totalReturn: number;      // 실현손익 + 배당 합계
+  };
+  portfolio: PortfolioItem[]; // 보유 종목별 비중 배열
+}
+
+/** 포트폴리오 비중 항목 (DashboardSummary.portfolio 원소) */
+export interface PortfolioItem {
+  stock_id: string;   // UUID (stocks.id FK)
+  ticker: string;     // Yahoo Finance 티커
+  name: string;       // 종목명
+  weight: number;     // 투자 비중 (%) — 소수점 2자리
+  amount: number;     // 해당 종목 현재 보유 평가액 (매수 누적 - 매도 누적)
+}
+
+/**
+ * 일별 잔고 포인트 (대시보드 차트용)
+ * 기존 DailyBalance와 동일 구조이나 대시보드 도메인 의미를 명시하기 위해 별도 선언.
+ */
+export interface DailyBalancePoint {
+  date: string;    // YYYY-MM-DD (KST 기준)
+  balance: number; // 해당일 누적 잔고 (매수 누적 - 매도 누적)
+}
+
+/** 월별 거래 유형별 금액 집계 (calcMonthlyBreakdown 반환 원소) */
+export interface MonthlyBreakdown {
+  month: string;     // YYYY-MM
+  buy: number;       // 해당 월 BUY amount 합계
+  sell: number;      // 해당 월 SELL amount 합계
+  dividend: number;  // 해당 월 DIVIDEND amount 합계
+}
+
+/** 월별 손익 집계 (calcMonthlyPnL 반환 원소) */
+export interface MonthlyPnL {
+  month: string;    // YYYY-MM
+  pnl: number;      // 해당 월 실현 손익 (평균단가법)
+  dividend: number; // 해당 월 배당 수입
+}
+
+/** 종목 월말 종가 포인트 (차트용) */
+export interface StockHistoryPoint {
+  month: string;      // YYYY-MM
+  closePrice: number; // 해당 월 말일 수정 종가 (Stock.currency 기준)
+}
+
+/** 종목별 미실현 평가손익 (calcUnrealizedPnL 반환 원소) */
+export interface UnrealizedPnL {
+  stock_id: string;      // UUID (stocks.id FK)
+  ticker: string;        // Yahoo Finance 티커
+  avgBuyPrice: number;   // 평균 매수단가 (평균단가법, Stock.currency 기준)
+  currentPrice: number;  // 현재가 (PriceMap에서 취득, Stock.currency 기준)
+  quantity: number;      // 잔여 보유 수량 (BUY 누계 - SELL 누계)
+  unrealizedPnL: number; // (currentPrice - avgBuyPrice) × quantity
+  returnRate: number;    // (currentPrice - avgBuyPrice) / avgBuyPrice × 100 (%, 소수점 2자리)
+}

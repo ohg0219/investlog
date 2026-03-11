@@ -25,6 +25,8 @@ export default defineConfig({
             'src/__tests__/auth.test.ts',
             'src/__tests__/calculations.test.ts',
             'src/__tests__/middleware.test.ts',
+            'src/__tests__/lib/**/*.test.ts',
+            'src/__tests__/api/**/*.test.ts',
           ],
         },
       },
