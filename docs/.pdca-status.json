@@ -37,11 +37,6 @@
   },
   "history": [
     {
-      "action": "design_created",
-      "feature": "01-foundation",
-      "timestamp": "2026-03-10T00:00:00.000Z"
-    },
-    {
       "action": "do_started",
       "feature": "01-foundation",
       "timestamp": "2026-03-10T00:00:00.000Z"
@@ -357,6 +352,17 @@
         "05-02-dashboard-kpi"
       ],
       "timestamp": "2026-03-11T16:10:40.000+09:00"
+    },
+    {
+      "action": "committed",
+      "feature": "05-02-dashboard-kpi",
+      "phase": "archived",
+      "commitCount": 2,
+      "commitMessages": [
+        "✨ 05-02-dashboard-kpi KPI 카드 컴포넌트 및 대시보드 페이지 구현",
+        "📝 05-02-dashboard-kpi PDCA 문서 아카이브 및 상태 정리"
+      ],
+      "timestamp": "2026-03-11T16:12:22.000+09:00"
     }
   ]
 }
