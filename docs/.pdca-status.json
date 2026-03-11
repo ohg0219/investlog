@@ -1,25 +1,10 @@
 {
   "version": "2.0",
-  "primaryFeature": "04-transactions",
+  "primaryFeature": "05-dashboard",
   "activeFeatures": [
-    "04-transactions",
     "05-dashboard"
   ],
   "features": {
-    "04-transactions": {
-      "phase": "plan",
-      "phaseNumber": 1,
-      "matchRate": null,
-      "iterationCount": 0,
-      "documents": {
-        "plan": "docs/01-plan/features/04-transactions.plan.md",
-        "design": null,
-        "analysis": null,
-        "report": null
-      },
-      "createdAt": "2026-03-10T00:00:00.000Z",
-      "updatedAt": "2026-03-10T00:00:00.000Z"
-    },
     "05-dashboard": {
       "phase": "plan",
       "phaseNumber": 1,
@@ -193,6 +178,65 @@
       "action": "cleanup",
       "deletedFeatures": ["03-stocks"],
       "timestamp": "2026-03-11T09:49:57.000+09:00"
+    },
+    {
+      "action": "committed",
+      "feature": "03-stocks",
+      "phase": "archived",
+      "commitCount": 5,
+      "commitMessages": [
+        "✨ 03-stocks 주식상품 타입 및 Yahoo Finance 유틸 함수 추가",
+        "✨ 03-stocks 주식상품 서비스 레이어 및 CRUD/가격 API 구현",
+        "✨ 03-stocks 주식상품 관리 UI 컴포넌트 및 대시보드 페이지 구현",
+        "✅ 03-stocks 주식상품 컴포넌트 테스트 추가",
+        "📝 03-stocks PDCA 문서 아카이브 및 상태 정리"
+      ],
+      "timestamp": "2026-03-11T10:00:58.000+09:00"
+    },
+    {
+      "action": "design_created",
+      "feature": "04-transactions",
+      "timestamp": "2026-03-11T10:16:42.000+09:00"
+    },
+    {
+      "action": "do_started",
+      "feature": "04-transactions",
+      "timestamp": "2026-03-11T10:20:00.000+09:00"
+    },
+    {
+      "action": "do_completed",
+      "feature": "04-transactions",
+      "note": "62/63 tests passing. TS-86 fails due to MSW server.listen() in beforeEach causing double handler invocation — test design issue not fixable from component side.",
+      "timestamp": "2026-03-11T12:02:38.000+09:00"
+    },
+    {
+      "action": "check_completed",
+      "feature": "04-transactions",
+      "matchRate": 86,
+      "timestamp": "2026-03-11T13:40:42.000+09:00"
+    },
+    {
+      "action": "iteration_completed",
+      "feature": "04-transactions",
+      "iteration": 1,
+      "matchRate": 92,
+      "timestamp": "2026-03-11T13:59:35.000+09:00"
+    },
+    {
+      "action": "report_generated",
+      "feature": "04-transactions",
+      "timestamp": "2026-03-11T14:02:40.000+09:00"
+    },
+    {
+      "action": "archived",
+      "feature": "04-transactions",
+      "archivedTo": "docs/archive/2026-03/04-transactions",
+      "timestamp": "2026-03-11T14:09:50.000+09:00"
+    },
+    {
+      "action": "cleanup",
+      "deletedFeatures": ["04-transactions"],
+      "timestamp": "2026-03-11T14:11:30.000+09:00"
     }
   ]
 }
