@@ -110,6 +110,36 @@ export interface DeleteRequest {
   password: string;
 }
 
+// ============================================================
+// 04-transactions 추가 타입
+// ============================================================
+
+/** Transaction + stocks JOIN 응답 */
+export interface TransactionWithStock extends Transaction {
+  stock: {
+    ticker: string;
+    name: string;
+    currency: string;
+  };
+}
+
+/** POST/PUT 요청 바디 내 transaction 데이터 */
+export interface TransactionInput {
+  stock_id: string;        // 필수, UUID
+  type: TransactionType;   // 필수: BUY | SELL | DIVIDEND
+  date: string;            // 필수: YYYY-MM-DD
+  quantity?: number;       // BUY/SELL 필수, DIVIDEND 생략 가능
+  price?: number;          // BUY/SELL 필수, DIVIDEND 생략 가능
+  amount: number;          // 필수, 양수
+  memo?: string;
+}
+
+/** POST /api/transactions 요청 바디 */
+export type CreateTransactionRequest = WriteRequest<TransactionInput>;
+
+/** PUT /api/transactions/[id] 요청 바디 */
+export type UpdateTransactionRequest = WriteRequest<TransactionInput>;
+
 /** GET /api/prices 응답 전체 맵 */
 export type PriceMap = Record<string, PriceQuote | null>;
 
