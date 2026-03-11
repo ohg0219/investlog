@@ -1,26 +1,11 @@
 {
   "version": "2.0",
-  "primaryFeature": "05-02-dashboard-kpi",
+  "primaryFeature": "05-03-dashboard-charts",
   "activeFeatures": [
-    "05-02-dashboard-kpi",
     "05-03-dashboard-charts",
     "05-04-dashboard-stock-realtime"
   ],
   "features": {
-    "05-02-dashboard-kpi": {
-      "phase": "plan",
-      "phaseNumber": 1,
-      "matchRate": null,
-      "iterationCount": 0,
-      "documents": {
-        "plan": "docs/01-plan/features/05-02-dashboard-kpi.plan.md",
-        "design": null,
-        "analysis": null,
-        "report": null
-      },
-      "createdAt": "2026-03-11T14:27:55.000+09:00",
-      "updatedAt": "2026-03-11T14:27:55.000+09:00"
-    },
     "05-03-dashboard-charts": {
       "phase": "plan",
       "phaseNumber": 1,
@@ -51,31 +36,6 @@
     }
   },
   "history": [
-    {
-      "action": "plan_created",
-      "feature": "01-foundation",
-      "timestamp": "2026-03-10T00:00:00.000Z"
-    },
-    {
-      "action": "plan_created",
-      "feature": "02-auth",
-      "timestamp": "2026-03-10T00:00:00.000Z"
-    },
-    {
-      "action": "plan_created",
-      "feature": "03-stocks",
-      "timestamp": "2026-03-10T00:00:00.000Z"
-    },
-    {
-      "action": "plan_created",
-      "feature": "04-transactions",
-      "timestamp": "2026-03-10T00:00:00.000Z"
-    },
-    {
-      "action": "plan_created",
-      "feature": "05-dashboard",
-      "timestamp": "2026-03-10T00:00:00.000Z"
-    },
     {
       "action": "design_created",
       "feature": "01-foundation",
@@ -112,7 +72,9 @@
     },
     {
       "action": "cleanup",
-      "deletedFeatures": ["01-foundation"],
+      "deletedFeatures": [
+        "01-foundation"
+      ],
       "timestamp": "2026-03-10T00:00:00.000Z"
     },
     {
@@ -162,7 +124,9 @@
     },
     {
       "action": "cleanup",
-      "deletedFeatures": ["02-auth"],
+      "deletedFeatures": [
+        "02-auth"
+      ],
       "timestamp": "2026-03-10T17:27:56.000+09:00"
     },
     {
@@ -206,7 +170,9 @@
     },
     {
       "action": "cleanup",
-      "deletedFeatures": ["03-stocks"],
+      "deletedFeatures": [
+        "03-stocks"
+      ],
       "timestamp": "2026-03-11T09:49:57.000+09:00"
     },
     {
@@ -265,7 +231,9 @@
     },
     {
       "action": "cleanup",
-      "deletedFeatures": ["04-transactions"],
+      "deletedFeatures": [
+        "04-transactions"
+      ],
       "timestamp": "2026-03-11T14:11:30.000+09:00"
     },
     {
@@ -316,13 +284,56 @@
     },
     {
       "action": "cleanup",
-      "deletedFeatures": ["05-01-dashboard-infra"],
+      "deletedFeatures": [
+        "05-01-dashboard-infra"
+      ],
       "timestamp": "2026-03-11T15:16:42.000+09:00"
+    },
+    {
+      "action": "committed",
+      "feature": "05-01-dashboard-infra",
+      "phase": "archived",
+      "commitCount": 4,
+      "commitMessages": [
+        "✨ 05-01-dashboard-infra 대시보드 타입 7개 및 계산 함수 4개 추가",
+        "✨ 05-01-dashboard-infra 대시보드 API 엔드포인트 3개 구현",
+        "✅ 05-01-dashboard-infra 대시보드 계산 함수 및 API 테스트 추가",
+        "📝 05-01-dashboard-infra PDCA 문서 아카이브 및 상태 정리"
+      ],
+      "timestamp": "2026-03-11T15:18:22.000+09:00"
     },
     {
       "action": "plan_created",
       "feature": "05-02-dashboard-kpi",
       "timestamp": "2026-03-11T14:27:55.000+09:00"
+    },
+    {
+      "action": "design_created",
+      "feature": "05-02-dashboard-kpi",
+      "timestamp": "2026-03-11T15:24:13.000+09:00"
+    },
+    {
+      "action": "do_started",
+      "feature": "05-02-dashboard-kpi",
+      "timestamp": "2026-03-11T15:52:46.000+09:00"
+    },
+    {
+      "action": "check_completed",
+      "feature": "05-02-dashboard-kpi",
+      "matchRate": 92,
+      "timestamp": "2026-03-11T16:00:15.000+09:00"
+    },
+    {
+      "action": "iteration_completed",
+      "feature": "05-02-dashboard-kpi",
+      "iteration": 1,
+      "matchRate": 95,
+      "timestamp": "2026-03-11T16:04:46.000+09:00"
+    },
+    {
+      "action": "report_generated",
+      "feature": "05-02-dashboard-kpi",
+      "timestamp": "2026-03-11T16:06:09.000+09:00"
     },
     {
       "action": "plan_created",
@@ -333,6 +344,19 @@
       "action": "plan_created",
       "feature": "05-04-dashboard-stock-realtime",
       "timestamp": "2026-03-11T14:27:55.000+09:00"
+    },
+    {
+      "action": "archived",
+      "feature": "05-02-dashboard-kpi",
+      "archivedTo": "docs/archive/2026-03/05-02-dashboard-kpi",
+      "timestamp": "2026-03-11T16:09:05.000+09:00"
+    },
+    {
+      "action": "cleanup",
+      "deletedFeatures": [
+        "05-02-dashboard-kpi"
+      ],
+      "timestamp": "2026-03-11T16:10:40.000+09:00"
     }
   ]
 }
