@@ -8,3 +8,4 @@
 | 04-transactions | 92% | 1회 | 2026-03-11 | [report](04-transactions/04-transactions.report.md) |
 | 05-01-dashboard-infra | 96% | 0회 | 2026-03-11 | [report](05-01-dashboard-infra/05-01-dashboard-infra.report.md) |
 | 05-02-dashboard-kpi | 95% | 1회 | 2026-03-11 | [report](05-02-dashboard-kpi/05-02-dashboard-kpi.report.md) |
+| 05-03-dashboard-charts | 92% | 0회 | 2026-03-11 | [report](05-03-dashboard-charts/05-03-dashboard-charts.report.md) |
