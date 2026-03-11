@@ -1,6 +1,6 @@
 import YahooFinance from 'yahoo-finance2';
 import type { Quote } from 'yahoo-finance2/modules/quote';
-import { PriceQuote, HistoricalData, SearchResult } from '@/types';
+import { PriceQuote, HistoricalData, SearchResult, PriceMap, LookupResult } from '@/types';
 
 // yahoo-finance2 v3: 클래스 인스턴스 사용 (static 메서드는 deprecated)
 const yf = new YahooFinance();
@@ -99,4 +99,68 @@ export async function searchTicker(query: string): Promise<SearchResult[]> {
   } catch {
     return [];
   }
+}
+
+// ============================================================
+// 03-stocks: 추가 함수
+// ============================================================
+
+/**
+ * 여러 티커의 현재가를 일괄 조회한다.
+ * 개별 실패 시 해당 티커 값을 null로 설정 (전체 실패가 아님).
+ */
+export async function getQuotes(tickers: string[]): Promise<PriceMap> {
+  const results = await Promise.allSettled(
+    tickers.map((ticker) => yf.quote(ticker))
+  );
+
+  const priceMap: PriceMap = {};
+  results.forEach((result, index) => {
+    const ticker = tickers[index];
+    if (result.status === 'fulfilled') {
+      const q: Quote = result.value;
+      priceMap[ticker] = {
+        price: q.regularMarketPrice ?? 0,
+        currency: q.currency ?? '',
+        changePercent: q.regularMarketChangePercent ?? 0,
+        name: q.shortName ?? q.longName ?? ticker,
+      };
+    } else {
+      priceMap[ticker] = null;
+    }
+  });
+
+  return priceMap;
+}
+
+/**
+ * 티커 자동완성 검색.
+ * EQUITY 유형만 필터링하여 상위 5개를 LookupResult[] 형태로 반환한다.
+ * yahoo-finance2 search() 예외 시 502용 에러를 throw한다.
+ */
+export async function lookupTickers(q: string): Promise<LookupResult[]> {
+  const result = await yf.search(q); // 예외 시 호출자(route handler)에서 502로 처리
+  const quotes = result.quotes ?? [];
+
+  return quotes
+    .filter((item) => {
+      const raw = item as Record<string, unknown>;
+      return (
+        raw['typeDisp'] === 'Equity' ||
+        raw['quoteType'] === 'EQUITY'
+      );
+    })
+    .slice(0, 5)
+    .map((item) => {
+      const raw = item as Record<string, unknown>;
+      return {
+        ticker: String(raw['symbol'] ?? ''),
+        name:
+          (typeof raw['shortname'] === 'string' ? raw['shortname'] : undefined) ??
+          (typeof raw['longname'] === 'string' ? raw['longname'] : undefined) ??
+          String(raw['symbol'] ?? ''),
+        exchange: typeof raw['exchange'] === 'string' ? raw['exchange'] : '',
+        type: 'EQUITY',
+      };
+    });
 }

@@ -83,3 +83,40 @@ export interface DailyBalance {
 }
 
 export type WeightByStock = Record<string, number>; // Key: stock_id, Value: 비중(%)
+
+// ============================================================
+// 03-stocks 추가 타입
+// ============================================================
+
+/** POST/PUT 요청 바디 내 stock 데이터 (id, created_at, updated_at 제외) */
+export interface StockInput {
+  ticker: string;   // 필수
+  name: string;     // 필수
+  market: string;   // 필수
+  country: string;  // 필수
+  currency: string; // 필수
+  sector?: string;
+  memo?: string;
+}
+
+/** 쓰기 요청 공통 바디 */
+export interface WriteRequest<T> {
+  password: string; // 평문 비밀번호 — bcrypt 검증 후 즉시 폐기
+  data: T;
+}
+
+/** DELETE 요청 바디 */
+export interface DeleteRequest {
+  password: string;
+}
+
+/** GET /api/prices 응답 전체 맵 */
+export type PriceMap = Record<string, PriceQuote | null>;
+
+/** GET /api/prices/lookup 응답 단일 항목 */
+export interface LookupResult {
+  ticker: string;   // Yahoo Finance 심볼
+  name: string;     // 종목명
+  exchange: string; // Yahoo 거래소 코드 (KSC, NMS, NYQ 등)
+  type: string;     // 항상 'EQUITY' (필터됨)
+}
