@@ -237,6 +237,20 @@
       "action": "cleanup",
       "deletedFeatures": ["04-transactions"],
       "timestamp": "2026-03-11T14:11:30.000+09:00"
+    },
+    {
+      "action": "committed",
+      "feature": "04-transactions",
+      "phase": "archived",
+      "commitCount": 5,
+      "commitMessages": [
+        "✨ 04-transactions 거래내역 타입 및 서비스 레이어 추가",
+        "✨ 04-transactions 거래내역 CRUD API 구현",
+        "✨ 04-transactions 거래내역 UI 컴포넌트 및 페이지 구현",
+        "✅ 04-transactions 거래내역 컴포넌트 테스트 추가",
+        "📝 04-transactions PDCA 문서 아카이브 및 상태 정리"
+      ],
+      "timestamp": "2026-03-11T14:13:42.000+09:00"
     }
   ]
 }
