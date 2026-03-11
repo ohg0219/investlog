@@ -1,26 +1,11 @@
 {
   "version": "2.0",
-  "primaryFeature": "03-stocks",
+  "primaryFeature": "04-transactions",
   "activeFeatures": [
-    "03-stocks",
     "04-transactions",
     "05-dashboard"
   ],
   "features": {
-    "03-stocks": {
-      "phase": "plan",
-      "phaseNumber": 1,
-      "matchRate": null,
-      "iterationCount": 0,
-      "documents": {
-        "plan": "docs/01-plan/features/03-stocks.plan.md",
-        "design": null,
-        "analysis": null,
-        "report": null
-      },
-      "createdAt": "2026-03-10T00:00:00.000Z",
-      "updatedAt": "2026-03-10T00:00:00.000Z"
-    },
     "04-transactions": {
       "phase": "plan",
       "phaseNumber": 1,
@@ -164,6 +149,50 @@
       "action": "cleanup",
       "deletedFeatures": ["02-auth"],
       "timestamp": "2026-03-10T17:27:56.000+09:00"
+    },
+    {
+      "action": "committed",
+      "feature": "02-auth",
+      "phase": "archived",
+      "commitCount": 3,
+      "commitMessages": [
+        "✨ 02-auth 인증 시스템 구현",
+        "✅ 02-auth 테스트 코드 및 환경 추가",
+        "📝 02-auth PDCA 문서 아카이브 및 상태 정리"
+      ],
+      "timestamp": "2026-03-10T17:32:41.000+09:00"
+    },
+    {
+      "action": "design_created",
+      "feature": "03-stocks",
+      "timestamp": "2026-03-11T08:45:36.000+09:00"
+    },
+    {
+      "action": "do_started",
+      "feature": "03-stocks",
+      "timestamp": "2026-03-11T09:13:47.000+09:00"
+    },
+    {
+      "action": "check_completed",
+      "feature": "03-stocks",
+      "matchRate": 92,
+      "timestamp": "2026-03-11T09:28:15.000+09:00"
+    },
+    {
+      "action": "report_generated",
+      "feature": "03-stocks",
+      "timestamp": "2026-03-11T09:32:52.000+09:00"
+    },
+    {
+      "action": "archived",
+      "feature": "03-stocks",
+      "archivedTo": "docs/archive/2026-03/03-stocks",
+      "timestamp": "2026-03-11T09:34:12.000+09:00"
+    },
+    {
+      "action": "cleanup",
+      "deletedFeatures": ["03-stocks"],
+      "timestamp": "2026-03-11T09:49:57.000+09:00"
     }
   ]
 }
