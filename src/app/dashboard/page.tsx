@@ -2,7 +2,7 @@ import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { verifyJwt } from '@/lib/auth'
 import DashboardClientShell from '@/components/dashboard/DashboardClientShell'
-import type { DashboardSummary, TransactionWithStock } from '@/types'
+import type { DashboardSummary, TransactionWithStock, ChartData } from '@/types'
 
 export default async function DashboardPage() {
   const cookieStore = cookies()
@@ -18,9 +18,10 @@ export default async function DashboardPage() {
     headers: { Cookie: `token=${token}` },
   }
 
-  const [summaryRes, transactionsRes] = await Promise.all([
+  const [summaryRes, transactionsRes, chartDataRes] = await Promise.all([
     fetch(`${baseUrl}/api/dashboard/summary`, fetchOptions).catch(() => null),
     fetch(`${baseUrl}/api/transactions`, fetchOptions).catch(() => null),
+    fetch(`${baseUrl}/api/dashboard/chart-data`, fetchOptions).catch(() => null),
   ])
 
   let summaryData: DashboardSummary | null = null
@@ -41,10 +42,20 @@ export default async function DashboardPage() {
     }
   }
 
+  let chartData: ChartData | null = null
+  if (chartDataRes && chartDataRes.ok) {
+    try {
+      chartData = (await chartDataRes.json()).data
+    } catch {
+      chartData = null
+    }
+  }
+
   return (
     <DashboardClientShell
       summary={summaryData}
       transactions={transactionsData}
+      chartData={chartData}
     />
   )
 }

@@ -199,6 +199,20 @@ export interface MonthlyPnL {
   dividend: number; // 해당 월 배당 수입
 }
 
+// ============================================================
+// 05-03-dashboard-charts 추가 타입
+// ============================================================
+
+/** 기간 필터 선택값 */
+export type Period = '3M' | '6M' | '1Y' | 'ALL'
+
+/** 차트 데이터 집합 (GET /api/dashboard/chart-data 응답 data 필드) */
+export interface ChartData {
+  dailyBalance: DailyBalancePoint[]
+  monthlyBreakdown: MonthlyBreakdown[]
+  monthlyPnL: MonthlyPnL[]
+}
+
 /** 종목 월말 종가 포인트 (차트용) */
 export interface StockHistoryPoint {
   month: string;      // YYYY-MM
