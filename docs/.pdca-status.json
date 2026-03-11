@@ -1,23 +1,53 @@
 {
   "version": "2.0",
-  "primaryFeature": "05-dashboard",
+  "primaryFeature": "05-02-dashboard-kpi",
   "activeFeatures": [
-    "05-dashboard"
+    "05-02-dashboard-kpi",
+    "05-03-dashboard-charts",
+    "05-04-dashboard-stock-realtime"
   ],
   "features": {
-    "05-dashboard": {
+    "05-02-dashboard-kpi": {
       "phase": "plan",
       "phaseNumber": 1,
       "matchRate": null,
       "iterationCount": 0,
       "documents": {
-        "plan": "docs/01-plan/features/05-dashboard.plan.md",
+        "plan": "docs/01-plan/features/05-02-dashboard-kpi.plan.md",
         "design": null,
         "analysis": null,
         "report": null
       },
-      "createdAt": "2026-03-10T00:00:00.000Z",
-      "updatedAt": "2026-03-10T00:00:00.000Z"
+      "createdAt": "2026-03-11T14:27:55.000+09:00",
+      "updatedAt": "2026-03-11T14:27:55.000+09:00"
+    },
+    "05-03-dashboard-charts": {
+      "phase": "plan",
+      "phaseNumber": 1,
+      "matchRate": null,
+      "iterationCount": 0,
+      "documents": {
+        "plan": "docs/01-plan/features/05-03-dashboard-charts.plan.md",
+        "design": null,
+        "analysis": null,
+        "report": null
+      },
+      "createdAt": "2026-03-11T14:27:55.000+09:00",
+      "updatedAt": "2026-03-11T14:27:55.000+09:00"
+    },
+    "05-04-dashboard-stock-realtime": {
+      "phase": "plan",
+      "phaseNumber": 1,
+      "matchRate": null,
+      "iterationCount": 0,
+      "documents": {
+        "plan": "docs/01-plan/features/05-04-dashboard-stock-realtime.plan.md",
+        "design": null,
+        "analysis": null,
+        "report": null
+      },
+      "createdAt": "2026-03-11T14:27:55.000+09:00",
+      "updatedAt": "2026-03-11T14:27:55.000+09:00"
     }
   },
   "history": [
@@ -251,6 +281,58 @@
         "📝 04-transactions PDCA 문서 아카이브 및 상태 정리"
       ],
       "timestamp": "2026-03-11T14:13:42.000+09:00"
+    },
+    {
+      "action": "plan_created",
+      "feature": "05-01-dashboard-infra",
+      "timestamp": "2026-03-11T14:27:55.000+09:00"
+    },
+    {
+      "action": "design_created",
+      "feature": "05-01-dashboard-infra",
+      "timestamp": "2026-03-11T14:40:40.000+09:00"
+    },
+    {
+      "action": "do_started",
+      "feature": "05-01-dashboard-infra",
+      "timestamp": "2026-03-11T15:00:46.000+09:00"
+    },
+    {
+      "action": "check_completed",
+      "feature": "05-01-dashboard-infra",
+      "matchRate": 96,
+      "timestamp": "2026-03-11T15:05:02.000+09:00"
+    },
+    {
+      "action": "report_generated",
+      "feature": "05-01-dashboard-infra",
+      "timestamp": "2026-03-11T15:14:46.000+09:00"
+    },
+    {
+      "action": "archived",
+      "feature": "05-01-dashboard-infra",
+      "archivedTo": "docs/archive/2026-03/05-01-dashboard-infra",
+      "timestamp": "2026-03-11T15:15:48.000+09:00"
+    },
+    {
+      "action": "cleanup",
+      "deletedFeatures": ["05-01-dashboard-infra"],
+      "timestamp": "2026-03-11T15:16:42.000+09:00"
+    },
+    {
+      "action": "plan_created",
+      "feature": "05-02-dashboard-kpi",
+      "timestamp": "2026-03-11T14:27:55.000+09:00"
+    },
+    {
+      "action": "plan_created",
+      "feature": "05-03-dashboard-charts",
+      "timestamp": "2026-03-11T14:27:55.000+09:00"
+    },
+    {
+      "action": "plan_created",
+      "feature": "05-04-dashboard-stock-realtime",
+      "timestamp": "2026-03-11T14:27:55.000+09:00"
     }
   ]
 }

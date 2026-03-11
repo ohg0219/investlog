@@ -6,3 +6,4 @@
 | 02-auth | 93% | 1회 | 2026-03-10 | [report](02-auth/02-auth.report.md) |
 | 03-stocks | 92% | 0회 | 2026-03-11 | [report](03-stocks/03-stocks.report.md) |
 | 04-transactions | 92% | 1회 | 2026-03-11 | [report](04-transactions/04-transactions.report.md) |
+| 05-01-dashboard-infra | 96% | 0회 | 2026-03-11 | [report](05-01-dashboard-infra/05-01-dashboard-infra.report.md) |
