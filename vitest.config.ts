@@ -29,7 +29,7 @@ export default defineConfig({
         },
       },
       {
-        // jsdom 환경: React 컴포넌트 테스트
+        // jsdom 환경: React 컴포넌트 + hooks 테스트
         plugins: [react()],
         resolve: { alias },
         test: {
@@ -37,7 +37,10 @@ export default defineConfig({
           environment: 'jsdom',
           globals: true,
           setupFiles: ['./src/__tests__/setup.ts', './src/__tests__/setup.dom.ts'],
-          include: ['src/__tests__/components/**/*.test.tsx'],
+          include: [
+            'src/__tests__/components/**/*.test.tsx',
+            'src/__tests__/hooks/**/*.test.ts',
+          ],
         },
       },
     ],
