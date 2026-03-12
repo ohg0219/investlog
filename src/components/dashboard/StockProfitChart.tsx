@@ -45,7 +45,7 @@ export default function StockProfitChart({ lines, height, showLegend = true }: S
           width={48}
         />
         <Tooltip
-          formatter={(value: number, name: string) => [`${value.toFixed(2)}%`, name]}
+          formatter={(value, name) => [typeof value === 'number' ? `${value.toFixed(2)}%` : String(value), name]}
           contentStyle={{ background: '#1e1a17', border: '1px solid #3a3530' }}
           labelStyle={{ color: '#e8ddd0' }}
         />

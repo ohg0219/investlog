@@ -37,7 +37,7 @@ export default async function DashboardPage() {
   let transactionsData: TransactionWithStock[] | null = null
   if (transactionsRes && transactionsRes.ok) {
     try {
-      transactionsData = await transactionsRes.json()
+      transactionsData = (await transactionsRes.json()).data ?? null
     } catch {
       transactionsData = null
     }
