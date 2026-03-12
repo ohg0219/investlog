@@ -1,78 +1,9 @@
 {
   "version": "2.0",
-  "primaryFeature": "05-04-dashboard-stock-realtime",
-  "activeFeatures": [
-    "05-04-dashboard-stock-realtime"
-  ],
-  "features": {
-    "05-04-dashboard-stock-realtime": {
-      "phase": "plan",
-      "phaseNumber": 1,
-      "matchRate": null,
-      "iterationCount": 0,
-      "documents": {
-        "plan": "docs/01-plan/features/05-04-dashboard-stock-realtime.plan.md",
-        "design": null,
-        "analysis": null,
-        "report": null
-      },
-      "createdAt": "2026-03-11T14:27:55.000+09:00",
-      "updatedAt": "2026-03-11T14:27:55.000+09:00"
-    }
-  },
+  "primaryFeature": null,
+  "activeFeatures": [],
+  "features": {},
   "history": [
-    {
-      "action": "committed",
-      "feature": "02-auth",
-      "phase": "plan",
-      "commitCount": 2,
-      "commitMessages": [
-        "✨ investlog 01-foundation 기반 인프라 구현",
-        "📝 01-foundation PDCA 문서 추가 및 아카이브"
-      ],
-      "timestamp": "2026-03-10T00:00:00.000Z"
-    },
-    {
-      "action": "design_created",
-      "feature": "02-auth",
-      "timestamp": "2026-03-10T00:00:00.000Z"
-    },
-    {
-      "action": "do_started",
-      "feature": "02-auth",
-      "timestamp": "2026-03-10T06:00:00.000Z"
-    },
-    {
-      "action": "check_completed",
-      "feature": "02-auth",
-      "matchRate": 87,
-      "timestamp": "2026-03-10T08:00:00.000Z"
-    },
-    {
-      "action": "iteration_completed",
-      "feature": "02-auth",
-      "iteration": 1,
-      "matchRate": 93,
-      "timestamp": "2026-03-10T09:00:00.000Z"
-    },
-    {
-      "action": "report_generated",
-      "feature": "02-auth",
-      "timestamp": "2026-03-10T09:30:00.000+09:00"
-    },
-    {
-      "action": "archived",
-      "feature": "02-auth",
-      "archivedTo": "docs/archive/2026-03/02-auth",
-      "timestamp": "2026-03-10T17:24:39.000+09:00"
-    },
-    {
-      "action": "cleanup",
-      "deletedFeatures": [
-        "02-auth"
-      ],
-      "timestamp": "2026-03-10T17:27:56.000+09:00"
-    },
     {
       "action": "committed",
       "feature": "02-auth",
@@ -346,6 +277,57 @@
         "05-03-dashboard-charts"
       ],
       "timestamp": "2026-03-11T17:10:40.000+09:00"
+    },
+    {
+      "action": "committed",
+      "feature": "05-03-dashboard-charts",
+      "phase": "archived",
+      "commitCount": 3,
+      "commitMessages": [
+        "✨ 05-03-dashboard-charts 차트 컴포넌트 6개 및 대시보드 연동 구현",
+        "✅ 05-03-dashboard-charts 차트 컴포넌트 TDD 테스트 5개 추가 (33/33 통과)",
+        "📝 05-03-dashboard-charts PDCA 문서 아카이브 및 상태 정리"
+      ],
+      "timestamp": "2026-03-11T17:21:21.000+09:00"
+    },
+    {
+      "action": "design_created",
+      "feature": "05-04-dashboard-stock-realtime",
+      "timestamp": "2026-03-11T17:35:44.000+09:00"
+    },
+    {
+      "action": "do_started",
+      "feature": "05-04-dashboard-stock-realtime",
+      "timestamp": "2026-03-11T17:45:02.000+09:00"
+    },
+    {
+      "action": "check_completed",
+      "feature": "05-04-dashboard-stock-realtime",
+      "matchRate": 80,
+      "timestamp": "2026-03-12T09:09:54.000+09:00"
+    },
+    {
+      "action": "iteration_completed",
+      "feature": "05-04-dashboard-stock-realtime",
+      "iteration": 1,
+      "matchRate": 90,
+      "timestamp": "2026-03-12T09:46:15.000+09:00"
+    },
+    {
+      "action": "report_generated",
+      "feature": "05-04-dashboard-stock-realtime",
+      "timestamp": "2026-03-12T09:48:30.000+09:00"
+    },
+    {
+      "action": "archived",
+      "feature": "05-04-dashboard-stock-realtime",
+      "archivedTo": "docs/archive/2026-03/05-04-dashboard-stock-realtime",
+      "timestamp": "2026-03-12T09:50:08.000+09:00"
+    },
+    {
+      "action": "cleanup",
+      "deletedFeatures": [],
+      "timestamp": "2026-03-12T09:51:54.000+09:00"
     }
   ]
 }
