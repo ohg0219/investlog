@@ -7,6 +7,7 @@ import { getHistorical } from '@/lib/yahoo';
 import { StockHistoryPoint } from '@/types';
 
 const VALID_PERIODS = ['6M', '1Y', 'ALL'] as const;
+const TICKER_REGEX = /^[A-Z0-9.^=\-]{1,10}$/i;
 type Period = (typeof VALID_PERIODS)[number];
 
 function getDateRange(period: string): { from: string; to: string } {
@@ -31,7 +32,7 @@ function getDateRange(period: string): { from: string; to: string } {
 
 export async function GET(
   request: Request,
-  { params }: { params: Promise<{ ticker: string }> }
+  { params }: { params: Promise<{ id: string }> }
 ): Promise<NextResponse> {
   try {
     const cookieStore = cookies();
@@ -51,7 +52,11 @@ export async function GET(
       );
     }
 
-    const { ticker } = await params;
+    const { id: ticker } = await params;
+
+    if (!TICKER_REGEX.test(ticker)) {
+      return NextResponse.json({ error: 'INVALID_TICKER' }, { status: 400 });
+    }
 
     const { searchParams } = new URL(request.url);
     const period = searchParams.get('period') ?? '1Y';

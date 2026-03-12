@@ -19,13 +19,15 @@ const DATE_REGEX = /^\d{4}-\d{2}-\d{2}$/;
 
 const VALID_TYPES = ['BUY', 'SELL', 'DIVIDEND'] as const;
 
-type RouteContext = { params: { id: string } };
+type RouteContext = { params: Promise<{ id: string }> };
 
 export async function PUT(
   request: Request,
   { params }: RouteContext
 ): Promise<NextResponse> {
   try {
+    const { id } = await params;
+
     // JWT 검증
     const cookieStore = cookies();
     const token = cookieStore.get('token')?.value;
@@ -70,8 +72,8 @@ export async function PUT(
       );
     }
 
-    // params.id UUID 형식 검증
-    if (!UUID_REGEX.test(params.id)) {
+    // id UUID 형식 검증
+    if (!UUID_REGEX.test(id)) {
       return NextResponse.json(
         { error: 'BAD_REQUEST', message: '유효하지 않은 거래내역 ID입니다' },
         { status: 400 }
@@ -185,7 +187,7 @@ export async function PUT(
     const { data: existing, error: existError } = await supabaseAdmin
       .from('transactions')
       .select('id')
-      .eq('id', params.id)
+      .eq('id', id)
       .single();
 
     if (existError || !existing) {
@@ -205,7 +207,7 @@ export async function PUT(
       memo: typeof data.memo === 'string' ? data.memo : undefined,
     };
 
-    const updated = await updateTransaction(params.id, txInput);
+    const updated = await updateTransaction(id, txInput);
     return NextResponse.json({ data: updated }, { status: 200 });
   } catch (err) {
     const withCode = err as Error & { code?: string };
@@ -224,6 +226,8 @@ export async function DELETE(
   { params }: RouteContext
 ): Promise<NextResponse> {
   try {
+    const { id } = await params;
+
     // JWT 검증
     const cookieStore = cookies();
     const token = cookieStore.get('token')?.value;
@@ -265,8 +269,8 @@ export async function DELETE(
       );
     }
 
-    // params.id UUID 형식 검증
-    if (!UUID_REGEX.test(params.id)) {
+    // id UUID 형식 검증
+    if (!UUID_REGEX.test(id)) {
       return NextResponse.json(
         { error: 'BAD_REQUEST', message: '유효하지 않은 거래내역 ID입니다' },
         { status: 400 }
@@ -288,7 +292,7 @@ export async function DELETE(
     const { data: existing, error: existError } = await supabaseAdmin
       .from('transactions')
       .select('id')
-      .eq('id', params.id)
+      .eq('id', id)
       .single();
 
     if (existError || !existing) {
@@ -298,7 +302,7 @@ export async function DELETE(
       );
     }
 
-    await deleteTransaction(params.id);
+    await deleteTransaction(id);
     return new NextResponse(null, { status: 204 });
   } catch {
     return NextResponse.json({ error: 'INTERNAL_ERROR' }, { status: 500 });

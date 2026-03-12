@@ -10,13 +10,24 @@ if (!process.env.AUTH_PASSWORD_HASH) {
 }
 const AUTH_PASSWORD_HASH = process.env.AUTH_PASSWORD_HASH;
 
-type RouteContext = { params: { id: string } };
+const UUID_REGEX =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+type RouteContext = { params: Promise<{ id: string }> };
 
 export async function PUT(
   request: Request,
   { params }: RouteContext
 ): Promise<NextResponse> {
   try {
+    const { id } = await params;
+    if (!UUID_REGEX.test(id)) {
+      return NextResponse.json(
+        { error: 'BAD_REQUEST', message: '유효하지 않은 ID 형식입니다' },
+        { status: 400 }
+      );
+    }
+
     // JWT 검증
     const cookieStore = cookies();
     const token = cookieStore.get('token')?.value;
@@ -84,7 +95,7 @@ export async function PUT(
     if (typeof updateData.sector === 'string') partialInput.sector = updateData.sector;
     if (typeof updateData.memo === 'string') partialInput.memo = updateData.memo;
 
-    const updated = await updateStock(params.id, partialInput);
+    const updated = await updateStock(id, partialInput);
     return NextResponse.json({ data: updated }, { status: 200 });
   } catch (err) {
     // NOT_FOUND
@@ -96,13 +107,7 @@ export async function PUT(
       );
     }
     // PostgreSQL UNIQUE 위반 (23505)
-    if (withCode.code === '23505') {
-      return NextResponse.json(
-        { error: 'DUPLICATE_TICKER', message: '이미 등록된 티커입니다' },
-        { status: 409 }
-      );
-    }
-    if (err instanceof Error && err.message.toLowerCase().includes('duplicate')) {
+    if (withCode.code === '23505' || (err instanceof Error && err.message.toLowerCase().includes('duplicate'))) {
       return NextResponse.json(
         { error: 'DUPLICATE_TICKER', message: '이미 등록된 티커입니다' },
         { status: 409 }
@@ -117,6 +122,14 @@ export async function DELETE(
   { params }: RouteContext
 ): Promise<NextResponse> {
   try {
+    const { id } = await params;
+    if (!UUID_REGEX.test(id)) {
+      return NextResponse.json(
+        { error: 'BAD_REQUEST', message: '유효하지 않은 ID 형식입니다' },
+        { status: 400 }
+      );
+    }
+
     // JWT 검증
     const cookieStore = cookies();
     const token = cookieStore.get('token')?.value;
@@ -173,7 +186,7 @@ export async function DELETE(
     const { data: linkedTx, error: txError } = await supabaseAdmin
       .from('transactions')
       .select('id')
-      .eq('stock_id', params.id)
+      .eq('stock_id', id)
       .limit(1);
 
     if (txError) {
@@ -195,7 +208,7 @@ export async function DELETE(
     const { data: existing, error: existError } = await supabaseAdmin
       .from('stocks')
       .select('id')
-      .eq('id', params.id)
+      .eq('id', id)
       .single();
 
     if (existError || !existing) {
@@ -205,7 +218,7 @@ export async function DELETE(
       );
     }
 
-    await deleteStock(params.id);
+    await deleteStock(id);
     return new NextResponse(null, { status: 204 });
   } catch {
     return NextResponse.json({ error: 'INTERNAL_ERROR' }, { status: 500 });

@@ -1,8 +1,6 @@
 /**
- * TDD Test — app/api/stocks/[ticker]/history/route.ts
+ * TDD Test — app/api/stocks/[id]/history/route.ts
  * Design Section 9.2 기반: TS-17 ~ TS-19
- *
- * Pre-Wave Red: route 파일이 없으므로 import 에러(Red) 상태가 정상.
  */
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
@@ -55,10 +53,10 @@ beforeEach(() => {
 });
 
 // ============================================================
-// GET /api/stocks/[ticker]/history
+// GET /api/stocks/[id]/history
 // ============================================================
 
-describe('GET /api/stocks/[ticker]/history', () => {
+describe('GET /api/stocks/[id]/history', () => {
   // TS-17: 정상 인증 + 유효한 period → 200
   it('TS-17: should return 200 with historical data when authenticated and period is valid', async () => {
     const mockCookieStore = { get: vi.fn().mockReturnValue({ value: 'valid-token' }) };
@@ -66,9 +64,9 @@ describe('GET /api/stocks/[ticker]/history', () => {
     vi.mocked(verifyJwt).mockResolvedValue({ sub: 'owner', iat: 0, exp: 9999999999 });
     vi.mocked(getHistorical).mockResolvedValue(sampleHistoricalData);
 
-    const { GET } = await import('@/app/api/stocks/[ticker]/history/route');
+    const { GET } = await import('@/app/api/stocks/[id]/history/route');
     const request = new Request('http://localhost/api/stocks/AAPL/history?period=1Y');
-    const response = await GET(request, { params: Promise.resolve({ ticker: 'AAPL' }) });
+    const response = await GET(request, { params: Promise.resolve({ id: 'AAPL' }) });
 
     expect(response.status).toBe(200);
     const body = await response.json();
@@ -85,9 +83,9 @@ describe('GET /api/stocks/[ticker]/history', () => {
     vi.mocked(cookies).mockReturnValue(mockCookieStore as any);
     vi.mocked(verifyJwt).mockResolvedValue({ sub: 'owner', iat: 0, exp: 9999999999 });
 
-    const { GET } = await import('@/app/api/stocks/[ticker]/history/route');
+    const { GET } = await import('@/app/api/stocks/[id]/history/route');
     const request = new Request('http://localhost/api/stocks/AAPL/history?period=INVALID');
-    const response = await GET(request, { params: Promise.resolve({ ticker: 'AAPL' }) });
+    const response = await GET(request, { params: Promise.resolve({ id: 'AAPL' }) });
 
     expect(response.status).toBe(400);
     const body = await response.json();
@@ -99,9 +97,9 @@ describe('GET /api/stocks/[ticker]/history', () => {
     const mockCookieStore = { get: vi.fn().mockReturnValue(undefined) };
     vi.mocked(cookies).mockReturnValue(mockCookieStore as any);
 
-    const { GET } = await import('@/app/api/stocks/[ticker]/history/route');
+    const { GET } = await import('@/app/api/stocks/[id]/history/route');
     const request = new Request('http://localhost/api/stocks/AAPL/history?period=1Y');
-    const response = await GET(request, { params: Promise.resolve({ ticker: 'AAPL' }) });
+    const response = await GET(request, { params: Promise.resolve({ id: 'AAPL' }) });
 
     expect(response.status).toBe(401);
     const body = await response.json();
