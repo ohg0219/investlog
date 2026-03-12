@@ -10,3 +10,4 @@
 | 05-02-dashboard-kpi | 95% | 1회 | 2026-03-11 | [report](05-02-dashboard-kpi/05-02-dashboard-kpi.report.md) |
 | 05-03-dashboard-charts | 92% | 0회 | 2026-03-11 | [report](05-03-dashboard-charts/05-03-dashboard-charts.report.md) |
 | 05-04-dashboard-stock-realtime | 90% | 1회 | 2026-03-12 | [report](05-04-dashboard-stock-realtime/05-04-dashboard-stock-realtime.report.md) |
+| 06-project-review | 93% | 1회 | 2026-03-12 | [report](06-project-review/06-project-review.report.md) |

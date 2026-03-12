@@ -5,59 +5,6 @@
   "features": {},
   "history": [
     {
-      "action": "design_created",
-      "feature": "03-stocks",
-      "timestamp": "2026-03-11T08:45:36.000+09:00"
-    },
-    {
-      "action": "do_started",
-      "feature": "03-stocks",
-      "timestamp": "2026-03-11T09:13:47.000+09:00"
-    },
-    {
-      "action": "check_completed",
-      "feature": "03-stocks",
-      "matchRate": 92,
-      "timestamp": "2026-03-11T09:28:15.000+09:00"
-    },
-    {
-      "action": "report_generated",
-      "feature": "03-stocks",
-      "timestamp": "2026-03-11T09:32:52.000+09:00"
-    },
-    {
-      "action": "archived",
-      "feature": "03-stocks",
-      "archivedTo": "docs/archive/2026-03/03-stocks",
-      "timestamp": "2026-03-11T09:34:12.000+09:00"
-    },
-    {
-      "action": "cleanup",
-      "deletedFeatures": [
-        "03-stocks"
-      ],
-      "timestamp": "2026-03-11T09:49:57.000+09:00"
-    },
-    {
-      "action": "committed",
-      "feature": "03-stocks",
-      "phase": "archived",
-      "commitCount": 5,
-      "commitMessages": [
-        "✨ 03-stocks 주식상품 타입 및 Yahoo Finance 유틸 함수 추가",
-        "✨ 03-stocks 주식상품 서비스 레이어 및 CRUD/가격 API 구현",
-        "✨ 03-stocks 주식상품 관리 UI 컴포넌트 및 대시보드 페이지 구현",
-        "✅ 03-stocks 주식상품 컴포넌트 테스트 추가",
-        "📝 03-stocks PDCA 문서 아카이브 및 상태 정리"
-      ],
-      "timestamp": "2026-03-11T10:00:58.000+09:00"
-    },
-    {
-      "action": "design_created",
-      "feature": "04-transactions",
-      "timestamp": "2026-03-11T10:16:42.000+09:00"
-    },
-    {
       "action": "do_started",
       "feature": "04-transactions",
       "timestamp": "2026-03-11T10:20:00.000+09:00"
@@ -328,6 +275,50 @@
         "📝 05-04-dashboard-stock-realtime PDCA 문서 아카이브 및 상태 정리"
       ],
       "timestamp": "2026-03-12T09:53:00.000+09:00"
+    },
+    {
+      "action": "plan_created",
+      "feature": "06-project-review",
+      "timestamp": "2026-03-12T18:00:00.000+09:00"
+    },
+    {
+      "action": "design_created",
+      "feature": "06-project-review",
+      "timestamp": "2026-03-12T10:39:57.000+09:00"
+    },
+    {
+      "action": "do_started",
+      "feature": "06-project-review",
+      "timestamp": "2026-03-12T10:50:11.000+09:00"
+    },
+    {
+      "action": "check_completed",
+      "feature": "06-project-review",
+      "matchRate": 73,
+      "timestamp": "2026-03-12T10:54:15.000+09:00"
+    },
+    {
+      "action": "iteration_completed",
+      "feature": "06-project-review",
+      "iteration": 1,
+      "matchRate": 93,
+      "timestamp": "2026-03-12T11:06:08.000+09:00"
+    },
+    {
+      "action": "report_generated",
+      "feature": "06-project-review",
+      "timestamp": "2026-03-12T11:20:25.000+09:00"
+    },
+    {
+      "action": "archived",
+      "feature": "06-project-review",
+      "archivedTo": "docs/archive/2026-03/06-project-review",
+      "timestamp": "2026-03-12T11:20:25.000+09:00"
+    },
+    {
+      "action": "cleanup",
+      "deletedFeatures": [],
+      "timestamp": "2026-03-12T11:33:05.000+09:00"
     }
   ]
 }

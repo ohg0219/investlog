@@ -1,0 +1,68 @@
+
+> investlog@0.1.0 build
+> next build
+
+  ▲ Next.js 14.2.35
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+ ⚠ Compiled with warnings
+
+./node_modules/jose/dist/webapi/lib/deflate.js
+A Node.js API is used (CompressionStream at line: 10) which is not supported in the Edge Runtime.
+Learn more: https://nextjs.org/docs/api-reference/edge-runtime
+
+Import trace for requested module:
+./node_modules/jose/dist/webapi/lib/deflate.js
+./node_modules/jose/dist/webapi/jwe/flattened/decrypt.js
+./node_modules/jose/dist/webapi/index.js
+
+./node_modules/jose/dist/webapi/lib/deflate.js
+A Node.js API is used (DecompressionStream at line: 26) which is not supported in the Edge Runtime.
+Learn more: https://nextjs.org/docs/api-reference/edge-runtime
+
+Import trace for requested module:
+./node_modules/jose/dist/webapi/lib/deflate.js
+./node_modules/jose/dist/webapi/jwe/flattened/decrypt.js
+./node_modules/jose/dist/webapi/index.js
+
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/16) ...
+   Generating static pages (4/16) 
+   Generating static pages (8/16) 
+   Generating static pages (12/16) 
+ ✓ Generating static pages (16/16)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ƒ /                                    1.7 kB           89 kB
+├ ○ /_not-found                          873 B          88.2 kB
+├ ƒ /api/auth/login                      0 B                0 B
+├ ƒ /api/auth/logout                     0 B                0 B
+├ ƒ /api/cron/ping                       0 B                0 B
+├ ƒ /api/dashboard/chart-data            0 B                0 B
+├ ƒ /api/dashboard/summary               0 B                0 B
+├ ƒ /api/prices                          0 B                0 B
+├ ƒ /api/prices/lookup                   0 B                0 B
+├ ƒ /api/stocks                          0 B                0 B
+├ ƒ /api/stocks/[id]                     0 B                0 B
+├ ƒ /api/stocks/[id]/history             0 B                0 B
+├ ƒ /api/transactions                    0 B                0 B
+├ ƒ /api/transactions/[id]               0 B                0 B
+├ ƒ /dashboard                           131 kB          227 kB
+├ ƒ /dashboard/stocks                    4.49 kB        91.8 kB
+└ ƒ /dashboard/transactions              5.91 kB        93.3 kB
++ First Load JS shared by all            87.3 kB
+  ├ chunks/117-22f4f9f4adf3fd71.js       31.7 kB
+  ├ chunks/fd9d1056-7c8cb799e19c27d1.js  53.6 kB
+  └ other shared chunks (total)          1.98 kB
+
+
+ƒ Middleware                             32.2 kB
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
