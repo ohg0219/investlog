@@ -1,11 +1,12 @@
 import KpiCard from '@/components/dashboard/KpiCard'
-import { DashboardSummary } from '@/types'
+import { DashboardSummary, PriceMap } from '@/types'
 
 interface KpiCardGroupProps {
   kpi: DashboardSummary['kpi']
+  priceMap?: PriceMap
 }
 
-export default function KpiCardGroup({ kpi }: KpiCardGroupProps) {
+export default function KpiCardGroup({ kpi, priceMap: _priceMap }: KpiCardGroupProps) {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
       <KpiCard

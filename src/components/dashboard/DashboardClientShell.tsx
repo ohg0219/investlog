@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect, useMemo } from 'react'
 import KpiCardGroup from '@/components/dashboard/KpiCardGroup'
 import PortfolioPieChart from '@/components/dashboard/PortfolioPieChart'
 import HoldingsList from '@/components/dashboard/HoldingsList'
@@ -7,12 +8,15 @@ import RecentTransactions from '@/components/dashboard/RecentTransactions'
 import DailyBalanceChart from '@/components/dashboard/DailyBalanceChart'
 import MonthlyBreakdownChart from '@/components/dashboard/MonthlyBreakdownChart'
 import MonthlyProfitSection from '@/components/dashboard/MonthlyProfitSection'
-import type { DashboardSummary, TransactionWithStock, ChartData } from '@/types'
+import StockProfitSection from '@/components/dashboard/StockProfitSection'
+import { calcUnrealizedPnL } from '@/lib/calculations'
+import type { DashboardSummary, TransactionWithStock, ChartData, Stock, PriceMap, StockHistoryPoint } from '@/types'
 
 interface DashboardClientShellProps {
   summary: DashboardSummary | null
   transactions: TransactionWithStock[] | null
   chartData: ChartData | null
+  historyData: Record<string, StockHistoryPoint[]> | null
 }
 
 function DataErrorMessage() {
@@ -33,14 +37,81 @@ export default function DashboardClientShell({
   summary,
   transactions,
   chartData,
+  historyData,
 }: DashboardClientShellProps) {
+  const [priceMap, setPriceMap] = useState<PriceMap>({})
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [priceError, setPriceError] = useState(false)
+
+  useEffect(() => {
+    let cancelled = false
+
+    const fetchPrices = async () => {
+      try {
+        const res = await fetch('/api/prices')
+        if (!res.ok) throw new Error('price fetch failed')
+        const data = await res.json()
+        if (!cancelled) {
+          setPriceMap(prev => data.prices ?? prev)
+          setLastUpdated(new Date())
+          setIsLoading(false)
+          setPriceError(false)
+        }
+      } catch {
+        if (!cancelled) {
+          setPriceError(true)
+          setIsLoading(false)
+        }
+      }
+    }
+
+    fetchPrices()
+    const interval = setInterval(fetchPrices, 60_000)
+
+    return () => {
+      cancelled = true
+      clearInterval(interval)
+    }
+  }, [])
+
+  const unrealizedList = useMemo(() => {
+    if (!transactions || !summary) return []
+    const stocks: Stock[] = summary.portfolio.map(p => ({
+      id: p.stock_id,
+      ticker: p.ticker,
+      name: p.name,
+      market: '',
+      country: '',
+      currency: '',
+      created_at: '',
+      updated_at: '',
+    }))
+    return calcUnrealizedPnL(transactions, stocks, priceMap)
+  }, [transactions, summary, priceMap])
+
+  void isLoading
+
   return (
     <div className="p-6 lg:p-8 space-y-8">
-      <h1 className="font-display text-paper text-4xl">대시보드</h1>
+      <div className="flex items-baseline gap-3">
+        <h1 className="font-display text-paper text-4xl">대시보드</h1>
+        <span className={[
+          'font-mono text-xs px-2 py-0.5 rounded',
+          priceError
+            ? 'bg-red-bright/20 text-red-bright'
+            : 'bg-accent/20 text-accent',
+        ].join(' ')}>
+          REALTIME
+        </span>
+        <span aria-live="polite" className="font-mono text-xs text-warm-mid">
+          {lastUpdated ? lastUpdated.toLocaleTimeString('ko-KR') : '--:--:--'}
+        </span>
+      </div>
 
       {/* KPI 섹션 */}
       {summary !== null ? (
-        <KpiCardGroup kpi={summary.kpi} />
+        <KpiCardGroup kpi={summary.kpi} priceMap={priceMap} />
       ) : (
         <DataErrorMessage />
       )}
@@ -91,6 +162,16 @@ export default function DashboardClientShell({
             totalInvested={summary?.kpi?.totalInvested}
           />
         </div>
+      )}
+
+      {/* 주식별 수익 추이 섹션 */}
+      {summary !== null && (
+        <StockProfitSection
+          portfolio={summary.portfolio}
+          historyData={historyData}
+          unrealizedList={unrealizedList}
+          priceMap={priceMap}
+        />
       )}
     </div>
   )

@@ -229,3 +229,24 @@ export interface UnrealizedPnL {
   unrealizedPnL: number; // (currentPrice - avgBuyPrice) × quantity
   returnRate: number;    // (currentPrice - avgBuyPrice) / avgBuyPrice × 100 (%, 소수점 2자리)
 }
+
+// ============================================================
+// 05-04-dashboard-stock-realtime 추가 타입
+// ============================================================
+
+/** 종목별 수익률 추이 포인트 (StockProfitChart 내부 가공 단위) */
+export interface StockReturnPoint {
+  month: string;       // YYYY-MM
+  returnRate: number;  // (closePrice - avgBuyPrice) / avgBuyPrice × 100
+}
+
+/**
+ * StockProfitChart에 전달되는 종목별 라인 단위.
+ * 수익률 계산은 StockProfitSection(컨테이너)에서 useMemo로 수행 후 이 타입으로 전달.
+ */
+export interface StockChartLine {
+  ticker: string;              // Yahoo Finance 티커
+  name: string;                // 종목명
+  color: string;               // hex 색상
+  data: StockReturnPoint[];    // 기간 필터 적용 후 정렬된 포인트 배열
+}
